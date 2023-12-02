@@ -38,4 +38,6 @@ The core parameters for the website can be edited in the `config/\_default/param
 
 Based in [Hugo Research Group Theme](https://github.com/wowchemy/starter-hugo-research-group)
 
+Test readme edit.
+
 ️**Trusted by 250,000+ researchers, educators, and students.** Highly customizable via the integrated **no-code, widget-based Wowchemy page builder**, making every site truly personalized.
