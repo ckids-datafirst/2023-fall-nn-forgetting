@@ -9,11 +9,15 @@ share: false
 
 ## Introduction
 
-This page serves as a Data Assessment Document for the project.  It should be no more than 2-3 pages long.  It can be drafted in the first two weeks of the project, and can serve as an interim project report.  It can be refined as the project progresses and the use of the data is better understood.  
+Since we were dealing with a very fundamental issue, we picked a very simple dataset to first reproduce the issue and later research ways on how to fix it.
 
 ## Data Overview and Examples
 
-Give a brief description of the data provided for this project, what it represents, how it was collected, and why it may help address the problem you are tackling.  Discuss if you will be using all the data or only some subset of it for the project.  Consider possible additional data that may be publicly available in the open Web that might complement the data that you are given.
+We used the fashion mnist dataset for this problem statement. We also tried to run the system with Cifar-10 dataset. Despite being fairly simplistic in nature, these dataset have an abundance of information enough to simulate the non-IID unlearning scenario.
+
+<img src = './assets/media/icon.png'/>
+
+
 
 ## Data Accessibility
 
