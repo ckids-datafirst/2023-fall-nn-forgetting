@@ -72,7 +72,7 @@ features:
   privacy_pack:
     enable: false
   repository:
-    url: https://github.com/ckids-datafirst/template-project-website
+    url: https://github.com/ckids-datafirst/2023-fall-nn-forgetting
     content_dir: content
     branch: main
   avatar:
