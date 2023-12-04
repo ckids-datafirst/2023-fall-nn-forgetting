@@ -15,7 +15,7 @@ Since we were dealing with a very fundamental issue, we picked a very simple dat
 
 We used the fashion mnist dataset for this problem statement. We also tried to run the system with Cifar-10 dataset. Despite being fairly simplistic in nature, these dataset have an abundance of information enough to simulate the non-IID unlearning scenario.
 
-<img src = './assets/media/icon.png'/>
+<img src = 'images/screenshot.png'/>
 
 
 
