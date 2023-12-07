@@ -32,3 +32,14 @@ Though initially framed as an engineering problem, at its essence, this constitu
 (1) For FedSiM paper : We built a network of Convolution Neural Networks(clients) and a Community model. Like it is proposed in the paper, we manipulated each neuron in every layer of the network with a small value to observe its overall impact on the output of the network.
 <br>
 (2) For the SCAFFOLD paper : We built a Federated network of convolutional neural networks and a community model. Each model was equipped with a client control variate as proposed in the paper to account and adjust for the client drift.
+<br>
+<img src = "scaffold_algorithm.png"/>
+<br>
+Like mentioned in the data section, we split each class in the following fashion to simulate non-IID dataset:
+
+    client_a : (labels == 'T-Shirt/top') | (labels == 'Trouser') | (labels == 'Pullover')
+    client_b : (labels == 'Dress') | (labels == 'Coat')
+    client_c : (labels == 'Sandal') | (labels == 'Shirt')
+    client_d : (labels == 'Sneaker') | (labels == 'Bag') | (labels == 'Ankle Boot')
+
+
