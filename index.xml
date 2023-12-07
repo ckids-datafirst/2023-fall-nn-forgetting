@@ -1,14 +1,51 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Learning and Forgetting in Neural Networks</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/</link><atom:link href="https://ckids-datafest.github.io/2023-fall-nn-forgetting/index.xml" rel="self" type="application/rss+xml"/><description>Learning and Forgetting in Neural Networks</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><image><url>https://ckids-datafest.github.io/2023-fall-nn-forgetting/media/icon_hu5486d42984c30aaff6be99d37062b147_3155_512x512_fill_lanczos_center_3.png</url><title>Learning and Forgetting in Neural Networks</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/</link></image><item><title>People</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/people/</link><pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/people/</guid><description/></item><item><title>Approach</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/approach/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/approach/</guid><description>&lt;p>This page contains key sections of the &lt;strong>Final Report&lt;/strong> for the project focused on the data science methodology used to approach the problem. It should be no more than 3 pages long. It should be done after or in combination with the Requirements document. It should have an initial release after no more than eight weeks into the project, and can serve as an interim project report. It can be refined as the project progresses and the problem is better understood.&lt;/p>
-&lt;h2 id="data-quality">Data Quality&lt;/h2>
-&lt;p>Describe any steps that were used to address any issues concerning the quality of the data. This may include collecting data quality metrics, discarding subsets of the data, or applying specific techniques for handling missing values, dealing with outliers, etc.&lt;/p>
-&lt;h2 id="data-preprocessing">Data Preprocessing&lt;/h2>
-&lt;p>Describe the steps taken to preprocess the raw data to prepare it for analysis. This may include data transformations to convert to a required format, feature engineering operations, encoding features as binary, etc.&lt;/p>
-&lt;h2 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)&lt;/h2>
-&lt;p>Discuss any techniques employed to gain insights into the data. This could include data visualizations, generating summary statistics, initial analysis, and other exploratory techniques used to understand the data distributions, features, and helpful patterns.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Learning and Forgetting in Neural Networks</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/</link><atom:link href="https://ckids-datafest.github.io/2023-fall-nn-forgetting/index.xml" rel="self" type="application/rss+xml"/><description>Learning and Forgetting in Neural Networks</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><image><url>https://ckids-datafest.github.io/2023-fall-nn-forgetting/media/icon_hu5486d42984c30aaff6be99d37062b147_3155_512x512_fill_lanczos_center_3.png</url><title>Learning and Forgetting in Neural Networks</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/</link></image><item><title>People</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/people/</link><pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/people/</guid><description/></item><item><title>Approach</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/approach/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/approach/</guid><description>&lt;h2 id="data-preprocessing">Data Preprocessing&lt;/h2>
+&lt;p>a) IID Data scenario : Each model was trained on a equal share of all the classes in the dataset.&lt;/p>
+&lt;p>b) Non-IID Data scenario: &lt;br>
+We simulate the non-IID data distribution using the following logic:
+client_a : (labels == &amp;lsquo;T-Shirt/top&amp;rsquo;) | (labels == &amp;lsquo;Trouser&amp;rsquo;) | (labels == &amp;lsquo;Pullover&amp;rsquo;)
+client_b : (labels == &amp;lsquo;Dress&amp;rsquo;) | (labels == &amp;lsquo;Coat&amp;rsquo;)
+client_c : (labels == &amp;lsquo;Sandal&amp;rsquo;) | (labels == &amp;lsquo;Shirt&amp;rsquo;)
+client_d : (labels == &amp;lsquo;Sneaker&amp;rsquo;) | (labels == &amp;lsquo;Bag&amp;rsquo;) | (labels == &amp;lsquo;Ankle Boot&amp;rsquo;)&lt;/p>
 &lt;h2 id="model-development">Model Development&lt;/h2>
-&lt;p>Describe the algorithms, methodology, and architectures used to generate models. Discuss how models were generated, seeded, and improved. Show the libraries and frameworks used for model development, as well as the rationale behind those choices.&lt;/p>
+&lt;p>We used the following Convolutional Neural Network for all the clients and the community model : &lt;br>&lt;/p>
+&lt;pre>&lt;code> _________________________________________________________________
+Layer (type) Output Shape Param #
+=================================================================
+fashion (InputLayer) [(None, 28, 28, 1)] 0
+conv2d_240 (Conv2D) (None, 24, 24, 128) 3328
+max_pooling2d_240 (MaxPool (None, 12, 12, 128) 0
+ing2D)
+conv2d_241 (Conv2D) (None, 6, 6, 128) 802944
+max_pooling2d_241 (MaxPool (None, 3, 3, 128) 0
+ing2D)
+flatten_120 (Flatten) (None, 1152) 0
+dense_120 (Dense) (None, 512) 590336
+predictions (Dense) (None, 10) 5130
+=================================================================
+Total params: 1401738 (5.35 MB)
+Trainable params: 1401738 (5.35 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+&lt;/code>&lt;/pre>
+&lt;p>We used Keras wrapper on Tensorflow for implementing the models. For visualization we stuck to Matplotlib and Seaborn.&lt;/p>
+&lt;p>For the scaffold model, each model was also equipped with client control variate for each layer to adjust for the drift. Since we had the architecture of our model fixed before hand, we could keep the vector structures of the control variates also the same as the layer weights.&lt;/p>
+&lt;pre>&lt;code> class ControlVariate():
+def __init__(self):
+self.conv1_c = tensorflow.zeros((5,5,1,128))
+self.conv2_c = tensorflow.zeros((7,7,128,128))
+self.flatten1_c = tensorflow.zeros((1152,512))
+self.flatten2_c = tensorflow.zeros((512,10))
+self.pred_c = tensorflow.zeros((10,))
+&lt;/code>&lt;/pre>
+&lt;p>We implemented the suggestions laid down by the SCAFFOLD Paper with each mini-batch train step as mentioned in the algorithm outlined in the paper.&lt;br>&lt;/p>
+&lt;img src = "scaffold_algorithm.png"/>
 &lt;h2 id="model-evaluation">Model Evaluation&lt;/h2>
-&lt;p>Discuss the evaluation metrics used to assess model performance, and justify those choices based on the problem that the project is addressing. Describe the evaluation techniques used, such as cross-validation, and how undesirable model behaviors, such as overfitting, were avoided.&lt;/p></description></item><item><title>Data Assessment</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/data/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/data/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;h3 id="a-evaluation-of-performance--br">a) Evaluation of performance : &lt;br>&lt;/h3>
+&lt;p>The evaluation dataset has 10000 instances of all classes to test how the clients perform on the global dataset. This enables to check if the knowledge has been transferred merely through weight transmission.&lt;/p>
+&lt;h3 id="b-evaluation-of-client-drift">b) Evaluation of client drift:&lt;/h3>
+&lt;p>The objective of this metric was to measure the client drift. We wanted to answer the question : how to visualize the drift of a model from it&amp;rsquo;s optima? The model output is the function of the weights of the model. We take the softmax output of the last layer of the client and we extract two probability distributions: one before the local training (after the weights are distributed from the community model) and one after the local training. We then measure the KL Divergence of the two probability distributions to see how much the output distribution varies from the community model. This is essentially the catastrophic forgetting described in the earlier sections. Interesting, this is also problem in Transfer Learning: how much of the pre-trained knowledge is lost in the fine-tuning but in the case of transfer learning, it&amp;rsquo;s core purpose and evaluation metrics lies in domain of the finetuned data. We don&amp;rsquo;t worry that much about the pre-trained knowledge.&lt;/p>
+&lt;h3 id="c-visualization-of-the-class-clustering">c) Visualization of the class clustering:&lt;/h3>
+&lt;p>Within the dataset, certain instances pose significant challenges. To define this difficulty, consider the scenario where a shirt and a pullover exhibit remarkable similarity. The model must discern subtle distinctions between them. Our aim was to visually represent this clustering by examining the neural network&amp;rsquo;s weight. Following each round, we fed a segment of the validation dataset through the network, capturing the activations from the final Dense layer of the CNN. We then reduced the dimensionality from 512 to 2 using t-SNE and plotted the resulting points after each round. The animated visualizations can be found in the Results section.&lt;/p></description></item><item><title>Data Assessment</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/data/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/data/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;p>Since we were dealing with a very fundamental issue, we picked a very simple dataset to first reproduce the issue and later research ways on how to fix it.&lt;/p>
 &lt;h2 id="data-overview-and-examples">Data Overview and Examples&lt;/h2>
 &lt;p>We used the Fashion mnist dataset for this problem statement. We also tried to run the system with Cifar-10 dataset. Despite being fairly simplistic in nature, these datasets can be engineered to get a non-IID and IID fractions. Very simply put, IID stands for data that comes from independent, identically distributed dataset. Non-IID is the exact opposite of that. This dataset doesn&amp;rsquo;t share a common distribution. In real life Machine Learning problem statement, the dataset is predominantly Non-IID and also we generally don&amp;rsquo;t know the true underlying distribution of the data. So it is very important that we truly understand this problem and make attempts to solve it. &lt;br>
