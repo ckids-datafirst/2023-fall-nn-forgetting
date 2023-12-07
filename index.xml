@@ -32,7 +32,16 @@ for Federated Learning&lt;/a> and wanted to implement the paper&amp;rsquo;s prop
 &lt;br>
 (1) For FedSiM paper : We built a network of Convolution Neural Networks(clients) and a Community model. Like it is proposed in the paper, we manipulated each neuron in every layer of the network with a small value to observe its overall impact on the output of the network.
 &lt;br>
-(2) For the SCAFFOLD paper : We built a Federated network of convolutional neural networks and a community model. Each model was equipped with a client control variate as proposed in the paper to account and adjust for the client drift.&lt;/p></description></item><item><title>Results</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/results/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/results/</guid><description>&lt;p>This page contains key sections of the &lt;strong>Final Report&lt;/strong> for the project focused on results to date. It should be no more than 2 pages long. An initial draft can be created at any point during the project, and can be refined as the project progresses.&lt;/p>
+(2) For the SCAFFOLD paper : We built a Federated network of convolutional neural networks and a community model. Each model was equipped with a client control variate as proposed in the paper to account and adjust for the client drift.
+&lt;br>
+&lt;img src = "scaffold_algorithm.png"/>
+&lt;br>
+Like mentioned in the data section, we split each class in the following fashion to simulate non-IID dataset:&lt;/p>
+&lt;pre>&lt;code>client_a : (labels == 'T-Shirt/top') | (labels == 'Trouser') | (labels == 'Pullover')
+client_b : (labels == 'Dress') | (labels == 'Coat')
+client_c : (labels == 'Sandal') | (labels == 'Shirt')
+client_d : (labels == 'Sneaker') | (labels == 'Bag') | (labels == 'Ankle Boot')
+&lt;/code>&lt;/pre></description></item><item><title>Results</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/results/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/results/</guid><description>&lt;p>This page contains key sections of the &lt;strong>Final Report&lt;/strong> for the project focused on results to date. It should be no more than 2 pages long. An initial draft can be created at any point during the project, and can be refined as the project progresses.&lt;/p>
 &lt;h2 id="system-and-model-performance">System and Model Performance&lt;/h2>
 &lt;p>Show the performance of the best system and model(s) developed, showing clearly the performance metrics and improvements over the baseline system as appropriate. Create visualizations that show clearly these results.&lt;/p>
 &lt;h2 id="discussion-of-findings">Discussion of Findings&lt;/h2>
