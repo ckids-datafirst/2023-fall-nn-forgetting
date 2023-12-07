@@ -11,11 +11,12 @@ share: false
 a) IID Data scenario :  Each model was trained on a equal share of all the classes in the dataset.
 
 b) Non-IID Data scenario: <br>
-We simulate the non-IID data distribution using the following logic: 
-    client_a : (labels == 'T-Shirt/top') | (labels == 'Trouser') | (labels == 'Pullover')
-    client_b : (labels == 'Dress') | (labels == 'Coat')
-    client_c : (labels == 'Sandal') | (labels == 'Shirt')
-    client_d : (labels == 'Sneaker') | (labels == 'Bag') | (labels == 'Ankle Boot')
+We simulate the non-IID data distribution using the following logic:
+
+      client_a : (labels == 'T-Shirt/top') | (labels == 'Trouser') | (labels == 'Pullover')
+      client_b : (labels == 'Dress') | (labels == 'Coat')
+      client_c : (labels == 'Sandal') | (labels == 'Shirt')
+      client_d : (labels == 'Sneaker') | (labels == 'Bag') | (labels == 'Ankle Boot')
 
 
 ## Model Development
