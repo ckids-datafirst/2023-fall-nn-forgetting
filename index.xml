@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Learning and Forgetting in Neural Networks</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/</link><atom:link href="https://ckids-datafest.github.io/2023-fall-nn-forgetting/index.xml" rel="self" type="application/rss+xml"/><description>Learning and Forgetting in Neural Networks</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><image><url>https://ckids-datafest.github.io/2023-fall-nn-forgetting/media/icon_hu5486d42984c30aaff6be99d37062b147_3155_512x512_fill_lanczos_center_3.png</url><title>Learning and Forgetting in Neural Networks</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/</link></image><item><title>People</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/people/</link><pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/people/</guid><description/></item><item><title>Approach</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/approach/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/approach/</guid><description>&lt;h2 id="data-preprocessing">Data Preprocessing&lt;/h2>
 &lt;p>a) IID Data scenario : Each model was trained on a equal share of all the classes in the dataset.&lt;/p>
 &lt;p>b) Non-IID Data scenario: &lt;br>
-We simulate the non-IID data distribution using the following logic:
-client_a : (labels == &amp;lsquo;T-Shirt/top&amp;rsquo;) | (labels == &amp;lsquo;Trouser&amp;rsquo;) | (labels == &amp;lsquo;Pullover&amp;rsquo;)
-client_b : (labels == &amp;lsquo;Dress&amp;rsquo;) | (labels == &amp;lsquo;Coat&amp;rsquo;)
-client_c : (labels == &amp;lsquo;Sandal&amp;rsquo;) | (labels == &amp;lsquo;Shirt&amp;rsquo;)
-client_d : (labels == &amp;lsquo;Sneaker&amp;rsquo;) | (labels == &amp;lsquo;Bag&amp;rsquo;) | (labels == &amp;lsquo;Ankle Boot&amp;rsquo;)&lt;/p>
+We simulate the non-IID data distribution using the following logic:&lt;/p>
+&lt;pre>&lt;code> client_a : (labels == 'T-Shirt/top') | (labels == 'Trouser') | (labels == 'Pullover')
+client_b : (labels == 'Dress') | (labels == 'Coat')
+client_c : (labels == 'Sandal') | (labels == 'Shirt')
+client_d : (labels == 'Sneaker') | (labels == 'Bag') | (labels == 'Ankle Boot')
+&lt;/code>&lt;/pre>
 &lt;h2 id="model-development">Model Development&lt;/h2>
 &lt;p>We used the following Convolutional Neural Network for all the clients and the community model : &lt;br>&lt;/p>
 &lt;pre>&lt;code> _________________________________________________________________
