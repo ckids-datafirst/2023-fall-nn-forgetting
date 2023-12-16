@@ -1,18 +1,18 @@
 ---
-bio: "I'm a student"
+bio: "Passionate about Machine Learning and Deep Learning systems and architecture :)"
 education:
   courses:
-    - course: BS in Computer Science
+    - course: MS in Computer Science
       institution: University of Southern California
-      year: 2015
-email: fakeemail@isi.edu
-first_name: Buffy
-last_name: Summers
+      year: 2023 - 2024
+email: bhargavk@usc.edu
+first_name: Bhargav
+last_name: Krishnamurthy
 organizations:
   - name: University of Southern California
     url: "https://www.usc.edu/"
 role: Student
-title: Buffy Summers
+title: Mr.
 user_groups:
   - Students
 ---
