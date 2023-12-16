@@ -53,13 +53,13 @@ self.pred_c = tensorflow.zeros((10,))
 &lt;table>
 &lt;thead>
 &lt;tr>
-&lt;th>IID&lt;/th>
-&lt;th>Non-IID&lt;/th>
+&lt;th style="text-align:center">IID&lt;/th>
+&lt;th style="text-align:center">Non-IID&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>
+&lt;td style="text-align:center">
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img alt="iid" srcset="
@@ -72,7 +72,7 @@ height="455"
 loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/td>
-&lt;td>
+&lt;td style="text-align:center">
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img alt="non_iid" srcset="
