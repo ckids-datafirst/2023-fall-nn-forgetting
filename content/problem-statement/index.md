@@ -2,7 +2,7 @@
 title: Problem and Requirements
 summary: Problem and Requirements document that will drive the work to be done in the project
 date: "2018-06-28T00:00:00Z"
-editable: true
+editable: false
 share: false
 ---
 
