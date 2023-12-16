@@ -12,7 +12,7 @@ organizations:
   - name: University of Southern California
     url: "https://www.usc.edu/"
 role: Student
-title: Mr.
+title: Bhargav Krishnamurthy
 user_groups:
   - Students
 ---
