@@ -6,11 +6,11 @@ editable: true
 share: false
 ---
 
-This page contains key sections of the **Final Report** for the project focused on results to date.  It should be no more than 2 pages long.  An initial draft can be created at any point during the project, and can be refined as the project progresses.
+## Visualization of the last layer of the model : 
 
-## System and Model Performance
+So how does the softmax layer give out the classes to be predicted. It takes the activations from the last layer of the model. We took a specific class-balanced subset of the test dataset and pulled out the activations from the last layer of the model. After reducing the dimension of the activation for an instance to 2 using t-SNE, we plotted the each instance colored by its target label. If the classes are placed well apart, it visually shows that even in two dimensions, these class clusters can be separated. Not a very accurate way but makes up for a visual. After all, we are very visual beings. :)
 
-Show the performance of the best system and model(s) developed, showing clearly the performance metrics and improvements over the baseline system as appropriate.  Create visualizations that show clearly these results.
+
 
 ## Discussion of Findings
 
