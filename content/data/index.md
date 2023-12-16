@@ -3,7 +3,7 @@ title: Data Assessment
 summary: Data Assessment Document that gives an overview of the data used for the project.
 
 date: "2018-06-28T00:00:00Z"
-editable: true
+editable: false
 share: false
 ---
 
