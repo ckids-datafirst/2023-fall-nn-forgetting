@@ -16,6 +16,14 @@ Industries increasingly embraced this concept upon realizing its potential for c
 
 Prof. Abram wanted us to address a very specific scenario. In the original Fed avg. paper, there is a recommendation put forward that the weights from the community be overwritten at the local client site. Now consider the example of a hospital with multiple sites and there is a model that predicts a condition based on certain characteristics. This case can be Non-IID in the sense that a form of condition might have never been encountered at a site. If we can use federated learning to solve this problem, then the sensitivity of the patient's privacy at a differnt client is maintained and the characteristics are learnt without any network overhead. But in Non-IID case, there is catastrophic forgetting at the client level. The task completely pulls the community weights in the direction of the local minima!
 
+Under IID conditions, <br>
+<img src = "iid.png"/> <br>
+
+Under Non-IID conditions, <br>
+<img src = "non_iid.png"/>
+
+Our motivation for the semester was two folds : First, to understand the drift of the community model and second to visualize and understand the catastrophic forgetting exhibited by the client models.
+
 
 ## Problem for the Semester
 
