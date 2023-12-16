@@ -49,13 +49,46 @@ self.pred_c = tensorflow.zeros((10,))
 &lt;p>Within the dataset, certain instances pose significant challenges. To define this difficulty, consider the scenario where a shirt and a pullover exhibit remarkable similarity. The model must discern subtle distinctions between them. Our aim was to visually represent this clustering by examining the neural network&amp;rsquo;s weight. Following each round, we fed a segment of the validation dataset through the network, capturing the activations from the final Dense layer of the CNN. We then reduced the dimensionality from 512 to 2 using t-SNE and plotted the resulting points after each round. The animated visualizations can be found in the Results section.&lt;/p></description></item><item><title>Data Assessment</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/data/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/data/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;p>Since we were dealing with a very fundamental issue, we picked a very simple dataset to first reproduce the issue and later research ways on how to fix it.&lt;/p>
 &lt;h2 id="data-overview-and-examples">Data Overview and Examples&lt;/h2>
-&lt;p>We used the Fashion mnist dataset for this problem statement. We also tried to run the system with Cifar-10 dataset. Despite being fairly simplistic in nature, these datasets can be engineered to get a non-IID and IID fractions. Very simply put, IID stands for data that comes from independent, identically distributed dataset. Non-IID is the exact opposite of that. This dataset doesn&amp;rsquo;t share a common distribution. In real life Machine Learning problem statement, the dataset is predominantly Non-IID and also we generally don&amp;rsquo;t know the true underlying distribution of the data. So it is very important that we truly understand this problem and make attempts to solve it. &lt;br>
-IID : &lt;br>&lt;/p>
-&lt;img src = 'iid_dataset.png'/>
-&lt;p>Non-IID:&lt;br>&lt;/p>
-&lt;img src = 'non-iid.png'>
-&lt;br>
-This is simply how we simulate IID and Non-IID dataset from Fashion Mnist data.</description></item><item><title>Problem and Requirements</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/problem-statement/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/problem-statement/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>We used the Fashion mnist dataset for this problem statement. We also tried to run the system with Cifar-10 dataset. Despite being fairly simplistic in nature, these datasets can be engineered to get a non-IID and IID fractions. Very simply put, IID stands for data that comes from independent, identically distributed dataset. Non-IID is the exact opposite of that. This dataset doesn&amp;rsquo;t share a common distribution. In real life Machine Learning problem statement, the dataset is predominantly Non-IID and also we generally don&amp;rsquo;t know the true underlying distribution of the data. So it is very important that we truly understand this problem and make attempts to solve it. &lt;br>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>IID&lt;/th>
+&lt;th>Non-IID&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="iid" srcset="
+/2023-fall-nn-forgetting/data/iid_dataset_hu6368d4c95c94cc5b732c5fa115a806f7_21371_0dbc176a3fbc57467ace422438664d18.webp 400w,
+/2023-fall-nn-forgetting/data/iid_dataset_hu6368d4c95c94cc5b732c5fa115a806f7_21371_da48196f9fc87df0a6c2b58a0d98fb06.webp 760w,
+/2023-fall-nn-forgetting/data/iid_dataset_hu6368d4c95c94cc5b732c5fa115a806f7_21371_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/data/iid_dataset_hu6368d4c95c94cc5b732c5fa115a806f7_21371_0dbc176a3fbc57467ace422438664d18.webp"
+width="580"
+height="455"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="non_iid" srcset="
+/2023-fall-nn-forgetting/data/non-iid_hu9286bcb2ec6bac18a5a3a77dbf11d497_21337_04aade0ef92ac09dcda81f11103c1c7f.webp 400w,
+/2023-fall-nn-forgetting/data/non-iid_hu9286bcb2ec6bac18a5a3a77dbf11d497_21337_af59b6d33c1994a394ea66ded14396e2.webp 760w,
+/2023-fall-nn-forgetting/data/non-iid_hu9286bcb2ec6bac18a5a3a77dbf11d497_21337_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/data/non-iid_hu9286bcb2ec6bac18a5a3a77dbf11d497_21337_04aade0ef92ac09dcda81f11103c1c7f.webp"
+width="580"
+height="455"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>This is simply how we simulate IID and Non-IID dataset from Fashion Mnist data.&lt;/p></description></item><item><title>Problem and Requirements</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/problem-statement/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/problem-statement/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;p>Federated Learning originates from the rising concerns about data privacy and the constraints of conventional centralized machine learning approaches. It emerged as a solution to safeguard user privacy while leveraging the wealth of knowledge found in dispersed data sources.&lt;/p>
 &lt;p>Industries increasingly embraced this concept upon realizing its potential for cooperative learning within the bounds of data privacy regulations. Its rapid evolution owes much to progress in encryption methods, communication protocols, and decentralized optimization algorithms. Presently, Federated Learning represents an encouraging framework that facilitates collaboration among diverse entities, prioritizing the protection of confidential user information and driving advancements in privacy-focused machine learning.&lt;/p>
 &lt;h2 id="motivation">Motivation&lt;/h2>
