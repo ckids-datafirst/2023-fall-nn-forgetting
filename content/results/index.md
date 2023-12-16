@@ -2,7 +2,7 @@
 title: Results
 summary: The main results of the work done to date
 date: "2018-06-28T00:00:00Z"
-editable: true
+editable: false
 share: false
 ---
 
