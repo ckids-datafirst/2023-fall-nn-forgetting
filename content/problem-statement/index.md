@@ -14,7 +14,8 @@ Industries increasingly embraced this concept upon realizing its potential for c
 
 ## Motivation
 
-The overall motivation for the project is to address and fix the issue of client drift in case of non-IID distributions being used to train different clients.  
+Prof. Abram wanted us to address a very specific scenario. In the original Fed avg. paper, there is a recommendation put forward that the weights from the community be overwritten at the local client site. Now consider the example of a hospital with multiple sites and there is a model that predicts a condition based on certain characteristics. This case can be Non-IID in the sense that a form of condition might have never been encountered at a site. If we can use federated learning to solve this problem, then the sensitivity of the patient's privacy at a differnt client is maintained and the characteristics are learnt without any network overhead. But in Non-IID case, there is catastrophic forgetting at the client level. The task completely pulls the community weights in the direction of the local minima!
+
 
 ## Problem for the Semester
 
