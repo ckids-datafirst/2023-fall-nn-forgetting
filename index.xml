@@ -75,11 +75,159 @@ for Federated Learning&lt;/a> and wanted to implement the paper&amp;rsquo;s prop
 &lt;br>
 (1) For FedSiM paper : We built a network of Convolution Neural Networks(clients) and a Community model. Like it is proposed in the paper, we manipulated each neuron in every layer of the network with a small value to observe its overall impact on the output of the network.
 &lt;br>
-(2) For the SCAFFOLD paper : We built a Federated network of convolutional neural networks and a community model. Each model was equipped with a client control variate as proposed in the paper to account and adjust for the client drift.&lt;/p></description></item><item><title>Results</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/results/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/results/</guid><description>&lt;h2 id="visualization-of-the-last-layer-of-the-model-">Visualization of the last layer of the model :&lt;/h2>
+(2) For the SCAFFOLD paper : We built a Federated network of convolutional neural networks and a community model. Each model was equipped with a client control variate as proposed in the paper to account and adjust for the client drift.&lt;/p></description></item><item><title>Results</title><link>https://ckids-datafest.github.io/2023-fall-nn-forgetting/results/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ckids-datafest.github.io/2023-fall-nn-forgetting/results/</guid><description>&lt;h2 id="visualization-of-the-last-layer-of-the-model">Visualization of the last layer of the model&lt;/h2>
 &lt;p>So how does the softmax layer give out the classes to be predicted. It takes the activations from the last layer of the model. We took a specific class-balanced subset of the test dataset and pulled out the activations from the last layer of the model. After reducing the dimension of the activation for an instance to 2 using t-SNE, we plotted the each instance colored by its target label. If the classes are placed well apart, it visually shows that even in two dimensions, these class clusters can be separated. Not a very accurate way but makes up for a visual. After all, we are very visual beings. :)&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>IID&lt;/th>
+&lt;th>Non-IID&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="iid"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/results/iid_community.gif"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="non_iid"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/results/community_non_iid.gif"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>As the rounds proceed, there is clear separation in the IID-cases but in the non-IID case, there is still a lot of overlap.&lt;/p>
+&lt;h2 id="kl-divergence">KL Divergence&lt;/h2>
+&lt;p>KL Divergence can show the disimilarity between two probability distributions. The final output is the function of the weights of the models. So we propose using KL Divergence as a measure of the catastrophic forgetting happening at the client sites. Specifically, KL Divergence between the probability distributions obtained from the community model and the local model after a round of finetuning is taken. A low divergence score is a good thing!&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>IID&lt;/th>
+&lt;th>Non-IID&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="iid" srcset="
+/2023-fall-nn-forgetting/results/fed_iid_kl_hud7e4e58de6ff8f54ab94a7a9e5b380d5_41322_ed3fcd1e18627eeb68b07fc5fbb4a77c.webp 400w,
+/2023-fall-nn-forgetting/results/fed_iid_kl_hud7e4e58de6ff8f54ab94a7a9e5b380d5_41322_b5a0ae9158cca82dc67ca0d2a9e994e9.webp 760w,
+/2023-fall-nn-forgetting/results/fed_iid_kl_hud7e4e58de6ff8f54ab94a7a9e5b380d5_41322_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/results/fed_iid_kl_hud7e4e58de6ff8f54ab94a7a9e5b380d5_41322_ed3fcd1e18627eeb68b07fc5fbb4a77c.webp"
+width="760"
+height="441"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="non_iid" srcset="
+/2023-fall-nn-forgetting/results/fed-noniid-kl_hu1e047e57ab35ea56ea8e8ec582abe665_71674_cd98e8b420bb2a67c87a0edd171171f6.webp 400w,
+/2023-fall-nn-forgetting/results/fed-noniid-kl_hu1e047e57ab35ea56ea8e8ec582abe665_71674_34e8427ea47c7de29661ea7c7ac10003.webp 760w,
+/2023-fall-nn-forgetting/results/fed-noniid-kl_hu1e047e57ab35ea56ea8e8ec582abe665_71674_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/results/fed-noniid-kl_hu1e047e57ab35ea56ea8e8ec582abe665_71674_cd98e8b420bb2a67c87a0edd171171f6.webp"
+width="760"
+height="435"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="validation-accuracy-plots">Validation accuracy plots&lt;/h2>
+&lt;p>We plotted the validation set accuracy for the community model as well as the clients. For the clients, the validation set contains all the classes and not just the classes it has in its local site.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>IID&lt;/th>
+&lt;th>Non-IID&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="iid" srcset="
+/2023-fall-nn-forgetting/results/iid-new-graph_huf6161251a13930a68fcd93bcf01c4727_108319_a85e9c927230447f676e9d42b96727b7.webp 400w,
+/2023-fall-nn-forgetting/results/iid-new-graph_huf6161251a13930a68fcd93bcf01c4727_108319_b666a464fe71b45d520f92c7d74b368c.webp 760w,
+/2023-fall-nn-forgetting/results/iid-new-graph_huf6161251a13930a68fcd93bcf01c4727_108319_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/results/iid-new-graph_huf6161251a13930a68fcd93bcf01c4727_108319_a85e9c927230447f676e9d42b96727b7.webp"
+width="760"
+height="425"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="non_iid" srcset="
+/2023-fall-nn-forgetting/results/non-IIDnew_huab5c57272e63876f7862587895f22ad7_97936_e4a3d69796cbe099eee22b118851aade.webp 400w,
+/2023-fall-nn-forgetting/results/non-IIDnew_huab5c57272e63876f7862587895f22ad7_97936_b8efe313bd5947502d647d5c2b090fa0.webp 760w,
+/2023-fall-nn-forgetting/results/non-IIDnew_huab5c57272e63876f7862587895f22ad7_97936_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/results/non-IIDnew_huab5c57272e63876f7862587895f22ad7_97936_e4a3d69796cbe099eee22b118851aade.webp"
+width="760"
+height="430"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>This plot essentially brings out the two issues we are trying to address. First, the validation accuracy of the community model is off by 10% in case of Non-IID data, which shows a drift in the community model. Second, the local clients never do that well on the validation set! It has poor accuracy. These are the two issues we sought to visualize and fix, if possible!&lt;/p>
+&lt;h2 id="scaffold">Scaffold&lt;/h2>
+&lt;p>Scaffold addresses the issue by adjusting for the client drift.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Validation plot&lt;/th>
+&lt;th>KL Divergence&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="non-iid" srcset="
+/2023-fall-nn-forgetting/results/scaffold_noniid_hu8a58688dd71fdd82ffbd77150ff5e68d_151562_35c04c4ed1739402a50160a10713ec4c.webp 400w,
+/2023-fall-nn-forgetting/results/scaffold_noniid_hu8a58688dd71fdd82ffbd77150ff5e68d_151562_7f77edc08805b379f3a185798900c87b.webp 760w,
+/2023-fall-nn-forgetting/results/scaffold_noniid_hu8a58688dd71fdd82ffbd77150ff5e68d_151562_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/results/scaffold_noniid_hu8a58688dd71fdd82ffbd77150ff5e68d_151562_35c04c4ed1739402a50160a10713ec4c.webp"
+width="760"
+height="430"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;td>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="non-iid" srcset="
+/2023-fall-nn-forgetting/results/scaffold_kl_hu44c17518009861492310c5c97c9dc5bf_137365_d8a6145751ea8cf99c65db65d14a9c78.webp 400w,
+/2023-fall-nn-forgetting/results/scaffold_kl_hu44c17518009861492310c5c97c9dc5bf_137365_ccd93ec2866cc04ef508e505129c4f9b.webp 760w,
+/2023-fall-nn-forgetting/results/scaffold_kl_hu44c17518009861492310c5c97c9dc5bf_137365_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ckids-datafest.github.io/2023-fall-nn-forgetting/2023-fall-nn-forgetting/results/scaffold_kl_hu44c17518009861492310c5c97c9dc5bf_137365_d8a6145751ea8cf99c65db65d14a9c78.webp"
+width="760"
+height="425"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h2 id="discussion-of-findings">Discussion of Findings&lt;/h2>
-&lt;p>Offer a discussion of the main findings using the system developed. Put the results in the context of the original problem statement and the questions that were posed.&lt;/p>
-&lt;p>Discuss any unexpected results, and potential explanations.&lt;/p>
-&lt;p>Enumerate (ideally in bullets) the most important findings, and their impact on your project goals.&lt;/p>
-&lt;h2 id="limitations-and-future-work">Limitations and Future Work&lt;/h2>
-&lt;p>Discuss any limitations of the work to date, how these limitations could be addressed in future work. Discuss what lines of work are most promising given the understanding of the problem and the data gained throughout the project.&lt;/p></description></item></channel></rss>
+&lt;p>While there may not be significant fixes at this stage, the semester long research into understanding the problem statement gave us two prominent papers and how they fail to work with our problem statement.&lt;br>&lt;/p>
+&lt;p>(i) At this point, we believe with scaffold, the pulling back of the client models at each local step prevents it from capturing the intricacies of the dataset locally thus affecting the performance of the global community model. &lt;br>&lt;/p>
+&lt;p>(ii) We investigated how this drift happens at each layer and found the first layer to be the most divergent. While this could be attributed to the fact that the input layer changes most with introduction of new data (global validation to local clients), a counter argument can also be made that the first layer picks up basic features and as the layers progresses, the features get accumulated to get a bigger picture. &lt;br>&lt;/p></description></item></channel></rss>
