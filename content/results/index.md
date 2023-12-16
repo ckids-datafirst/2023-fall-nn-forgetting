@@ -11,7 +11,7 @@ share: false
 So how does the softmax layer give out the classes to be predicted. It takes the activations from the last layer of the model. We took a specific class-balanced subset of the test dataset and pulled out the activations from the last layer of the model. After reducing the dimension of the activation for an instance to 2 using t-SNE, we plotted the each instance colored by its target label. If the classes are placed well apart, it visually shows that even in two dimensions, these class clusters can be separated. Not a very accurate way but makes up for a visual. After all, we are very visual beings. :)
 
 | IID                    | Non-IID              |
-| ---------------------- | ---------------------- |
+|:----------------------:|:----------------------:|
 | ![iid](iid_community.gif) | ![non_iid](community_non_iid.gif) |
 
 As the rounds proceed, there is clear separation in the IID-cases but in the non-IID case, there is still a lot of overlap. 
@@ -22,7 +22,7 @@ KL Divergence can show the disimilarity between two probability distributions. T
 
 
 | IID                    | Non-IID              |
-| ---------------------- | ---------------------- |
+|:----------------------:|:---------------------:|
 | ![iid](fed_iid_kl.png) | ![non_iid](fed-noniid-kl.png) |
 
 ## Validation accuracy plots 
@@ -30,7 +30,7 @@ KL Divergence can show the disimilarity between two probability distributions. T
 We plotted the validation set accuracy for the community model as well as the clients. For the clients, the validation set contains all the classes and not just the classes it has in its local site.
 
 | IID                    | Non-IID              |
-| ---------------------- | ---------------------- |
+|:----------------------:|:----------------------:|
 | ![iid](iid-new-graph.png) | ![non_iid](non-IIDnew.png) |
 
 This plot essentially brings out the two issues we are trying to address. First, the validation accuracy of the community model is off by 10% in case of Non-IID data, which shows a drift in the community model. Second, the local clients never do that well on the validation set! It has poor accuracy. These are the two issues we sought to visualize and fix, if possible!
@@ -39,7 +39,7 @@ This plot essentially brings out the two issues we are trying to address. First,
 Scaffold addresses the issue by adjusting for the client drift.
 
 | Validation plot                    | KL Divergence              |
-| ---------------------- | ---------------------- |
+|:----------------------:|:---------------------:|
 | ![non-iid](scaffold_noniid.png) | ![non-iid](scaffold_kl.png) |
 
 
